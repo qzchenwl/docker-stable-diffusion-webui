@@ -7,4 +7,5 @@ VOLUME /app/stable-diffusion-webui/localizations
 
 EXPOSE 7860
 
-pip install requests
+CMD ["pip", "install", "requests"]
+
