@@ -1,6 +1,6 @@
 FROM python:3.10-alpine
 
-RUN apk update && apk add git aria2 wget make automake gcc g++ subversion python3-dev
+RUN apk update && apk add git aria2 wget make automake gcc g++ patch subversion python3-dev
 
 WORKDIR /content
 RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui /content/stable-diffusion-webui
@@ -10,8 +10,8 @@ RUN wget -qq --content-disposition https://civitai.com/api/download/models/14014
     wget -qq --content-disposition https://civitai.com/api/download/models/11829 -P /content/stable-diffusion-webui/models/Lora && \
     echo 'Downloaded Lora models:' && \
     ls /content/stable-diffusion-webui/models/Lora
-RUN pip install torch==1.13.0+cpu torchvision==0.14.0+cpu --extra-index-url https://download.pytorch.org/whl/cpu && \
-    pip install -r /content/stable-diffusion-webui/requirements_versions.txt
+RUN pip install torch==1.13.0+cpu torchvision==0.14.0+cpu --extra-index-url https://download.pytorch.org/whl/cpu
+RUN pip install -r /content/stable-diffusion-webui/requirements_versions.txt
 
 RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
