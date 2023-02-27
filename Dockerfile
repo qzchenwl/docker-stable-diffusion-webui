@@ -9,14 +9,14 @@ RUN wget -qq --content-disposition https://civitai.com/api/download/models/14014
     wget -qq --content-disposition https://civitai.com/api/download/models/12050 -P /content/stable-diffusion-webui/models/Lora && \
     wget -qq --content-disposition https://civitai.com/api/download/models/11829 -P /content/stable-diffusion-webui/models/Lora && \
     echo 'Downloaded lora models'
-RUN pip install -r /content/stable-diffusion-webu/requirements_versions.txt
+RUN pip install -r /content/stable-diffusion-webui/requirements_versions.txt
 
 RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
-VOLUME /app/stable-diffusion-webui/extensions
-VOLUME /app/stable-diffusion-webui/models
-VOLUME /app/stable-diffusion-webui/outputs
-VOLUME /app/stable-diffusion-webui/localizations
+VOLUME /content/stable-diffusion-webui/extensions
+VOLUME /content/stable-diffusion-webui/models
+VOLUME /content/stable-diffusion-webui/outputs
+VOLUME /content/stable-diffusion-webui/localizations
 
 EXPOSE 7860
 
