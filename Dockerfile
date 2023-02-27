@@ -1,6 +1,6 @@
 FROM python:3.10-alpine
 
-RUN apk update && apk add git aria2 wget
+RUN apk update && apk add git aria2 wget make automake gcc g++ subversion python3-dev
 
 WORKDIR /content
 RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui /content/stable-diffusion-webui
