@@ -7,6 +7,7 @@ RUN apt update && \
                    curl \
                    ca-certificates \
                    python3 \
+                   python3-opencv \
                    python3-pip && \
     rm -rf /var/lib/apt/lists
 RUN pip3 install --no-cache-dir --upgrade pip && \
