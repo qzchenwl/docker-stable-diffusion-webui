@@ -25,6 +25,7 @@ VOLUME /content/stable-diffusion-webui/extensions
 VOLUME /content/stable-diffusion-webui/models
 VOLUME /content/stable-diffusion-webui/outputs
 VOLUME /content/stable-diffusion-webui/localizations
+VOLUME /content/stable-diffusion-webui/repositories
 
 EXPOSE 7860
 
