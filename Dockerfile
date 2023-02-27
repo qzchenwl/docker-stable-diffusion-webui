@@ -8,7 +8,8 @@ RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://civitai.com/ap
 RUN wget -qq --content-disposition https://civitai.com/api/download/models/14014 -P /content/stable-diffusion-webui/models/Lora && \
     wget -qq --content-disposition https://civitai.com/api/download/models/12050 -P /content/stable-diffusion-webui/models/Lora && \
     wget -qq --content-disposition https://civitai.com/api/download/models/11829 -P /content/stable-diffusion-webui/models/Lora && \
-    echo 'Downloaded lora models'
+    echo 'Downloaded Lora models:' && \
+    ls /content/stable-diffusion-webui/models/Lora
 RUN pip install torch==1.13.0+cpu torchvision==0.14.0+cpu --extra-index-url https://download.pytorch.org/whl/cpu && \
     pip install -r /content/stable-diffusion-webui/requirements_versions.txt
 
@@ -21,6 +22,6 @@ VOLUME /content/stable-diffusion-webui/localizations
 
 EXPOSE 7860
 
-ENTRYPOINT ["/content/stable-diffusion-webui/webui.sh", "--skip-torch-cuda-test", "--precision", "full", "--no-half", "--use-cpu", "SD", "GFPGAN", "BSRGAN", "ESRGAN", "SCUNet", "CodeFormer", "--all"]
+ENTRYPOINT ["/content/stable-diffusion-webui/webui.sh", "-f", "--skip-torch-cuda-test", "--precision", "full", "--no-half", "--use-cpu", "SD", "GFPGAN", "BSRGAN", "ESRGAN", "SCUNet", "CodeFormer", "--all"]
 CMD ["--enable-insecure-extension-access"]
 
