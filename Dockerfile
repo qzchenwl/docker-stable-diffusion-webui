@@ -1,6 +1,6 @@
 FROM python:3.10-alpine
 
-RUN apk update && apk add git aria2 wget make automake gcc g++ patch subversion python3-dev
+RUN apk update && apk add git aria2 wget make automake gcc g++ gfortran patch subversion python3-dev
 
 WORKDIR /content
 RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui /content/stable-diffusion-webui
@@ -22,6 +22,7 @@ VOLUME /content/stable-diffusion-webui/localizations
 
 EXPOSE 7860
 
-ENTRYPOINT ["/content/stable-diffusion-webui/webui.sh", "-f", "--skip-torch-cuda-test", "--precision", "full", "--no-half", "--use-cpu", "SD", "GFPGAN", "BSRGAN", "ESRGAN", "SCUNet", "CodeFormer", "--all"]
+COPY entrypoint.sh /content/entrypoint.sh
+ENTRYPOINT ["/content/entrypoint.sh", "-f", "--skip-torch-cuda-test", "--precision", "full", "--no-half", "--use-cpu", "SD", "GFPGAN", "BSRGAN", "ESRGAN", "SCUNet", "CodeFormer", "--all"]
 CMD ["--enable-insecure-extension-access"]
 
