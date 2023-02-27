@@ -1,5 +1,7 @@
 FROM ubuntu:22.10
 
+ARG DEBIAN_FRONTEND=noninteractive
+
 RUN apt update && \
     apt install -y bash \
                    build-essential \
