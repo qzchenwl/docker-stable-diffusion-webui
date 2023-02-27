@@ -1,13 +1,22 @@
-FROM python:3.10-alpine
+FROM ubuntu:22.10
 
-RUN apk update && apk add git aria2 wget make automake gcc g++ gfortran patch subversion python3-dev openblas openblas-dev llvm-dev
+RUN apt update && \
+    apt install -y bash \
+                   build-essential \
+                   git \
+                   curl \
+                   ca-certificates \
+                   python3 \
+                   python3-pip && \
+    rm -rf /var/lib/apt/lists
+RUN pip3 install --no-cache-dir --upgrade pip && \
+    pip3 install --no-cache-dir torch==1.13.0+cpu torchvision==0.14.0+cpu --extra-index-url https://download.pytorch.org/whl/cpu
 
 WORKDIR /content
 RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui /content/stable-diffusion-webui
-RUN pip install --no-cache-dir torch==1.13.0+cpu torchvision==0.14.0+cpu --extra-index-url https://download.pytorch.org/whl/cpu
-RUN pip install --no-cache-dir -r /content/stable-diffusion-webui/requirements_versions.txt
+RUN pip3 install --no-cache-dir -r /content/stable-diffusion-webui/requirements_versions.txt
 
-RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+RUN pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
 VOLUME /content/stable-diffusion-webui/extensions
 VOLUME /content/stable-diffusion-webui/models
