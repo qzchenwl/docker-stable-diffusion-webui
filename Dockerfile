@@ -27,6 +27,8 @@ VOLUME /content/stable-diffusion-webui/localizations
 EXPOSE 7860
 
 COPY entrypoint.sh /content/entrypoint.sh
+COPY download-chilloutmix-model.sh /content/download-chilloutmix-model.sh
+
 ENTRYPOINT ["/content/entrypoint.sh", "-f", "--skip-torch-cuda-test", "--precision", "full", "--no-half", "--use-cpu", "SD", "GFPGAN", "BSRGAN", "ESRGAN", "SCUNet", "CodeFormer", "--all"]
 CMD ["--enable-insecure-extension-access"]
 
