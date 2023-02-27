@@ -4,5 +4,6 @@
 #wget -c -qq https://civitai.com/api/download/models/14014 -O /content/stable-diffusion-webui/models/Lora/koreanDollLikeness_v15.safetensors
 #wget -c -qq https://civitai.com/api/download/models/12050 -O /content/stable-diffusion-webui/models/Lora/japaneseDollLikeness_v10.safetensors
 
-/content/stable-diffusion-webui/webui.sh "$@"
+cd /content/stable-diffusion-webui
+python launch.py "$@"
 
