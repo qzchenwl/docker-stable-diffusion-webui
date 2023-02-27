@@ -1,13 +1,12 @@
-FROM python:3.10-alpine
+FROM huggingface/transformers-pytorch-cpu:4.18.0
 
-RUN apk update && apk add git aria2 wget make automake gcc g++ gfortran patch subversion python3-dev openblas openblas-dev llvm-dev
+RUN apt update && apt install -y git aria2 wget
 
 WORKDIR /content
 RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui /content/stable-diffusion-webui
-RUN pip install --no-cache-dir torch==1.13.0+cpu torchvision==0.14.0+cpu --extra-index-url https://download.pytorch.org/whl/cpu
-RUN pip install --no-cache-dir -r /content/stable-diffusion-webui/requirements_versions.txt
+RUN python3 -m pip install --no-cache-dir -r /content/stable-diffusion-webui/requirements_versions.txt
 
-RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+RUN python3 -m pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
 VOLUME /content/stable-diffusion-webui/extensions
 VOLUME /content/stable-diffusion-webui/models
