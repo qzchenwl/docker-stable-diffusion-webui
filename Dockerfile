@@ -1,6 +1,6 @@
 FROM python:3.10-alpine
 
-RUN apk update && apk add git aria2 wget make automake gcc g++ gfortran patch subversion python3-dev openblas openblas-dev
+RUN apk update && apk add git aria2 wget make automake gcc g++ gfortran patch subversion python3-dev openblas openblas-dev llvm-dev
 
 WORKDIR /content
 RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui /content/stable-diffusion-webui
