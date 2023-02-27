@@ -5,5 +5,5 @@
 #wget -c -qq https://civitai.com/api/download/models/12050 -O /content/stable-diffusion-webui/models/Lora/japaneseDollLikeness_v10.safetensors
 
 cd /content/stable-diffusion-webui
-python launch.py "$@"
+python3 launch.py "$@"
 
