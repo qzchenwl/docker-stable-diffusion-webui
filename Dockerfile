@@ -9,6 +9,7 @@ RUN apt update && \
                    curl \
                    ca-certificates \
                    python3 \
+                   python3-venv \
                    python3-opencv \
                    python3-pip && \
     rm -rf /var/lib/apt/lists
