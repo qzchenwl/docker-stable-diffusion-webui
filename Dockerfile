@@ -17,7 +17,7 @@ RUN pip3 install --no-cache-dir --upgrade pip && \
 
 WORKDIR /content
 RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui /content/stable-diffusion-webui
-RUN pip3 install --no-cache-dir -r /content/stable-diffusion-webui/requirements_versions.txt
+RUN cd /content/stable-diffusion-webui && python3 launch.py --skip-torch-cuda-test --exit
 
 RUN pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
@@ -25,13 +25,12 @@ VOLUME /content/stable-diffusion-webui/extensions
 VOLUME /content/stable-diffusion-webui/models
 VOLUME /content/stable-diffusion-webui/outputs
 VOLUME /content/stable-diffusion-webui/localizations
-VOLUME /content/stable-diffusion-webui/repositories
 
 EXPOSE 7860
 
 COPY entrypoint.sh /content/entrypoint.sh
 COPY download-chilloutmix-model.sh /content/download-chilloutmix-model.sh
 
-ENTRYPOINT ["/content/entrypoint.sh", "-f", "--skip-torch-cuda-test", "--precision", "full", "--no-half", "--use-cpu", "SD", "GFPGAN", "BSRGAN", "ESRGAN", "SCUNet", "CodeFormer", "--all"]
+ENTRYPOINT ["/content/entrypoint.sh", "--skip-install", "-f", "--skip-torch-cuda-test", "--precision", "full", "--no-half", "--use-cpu", "SD", "GFPGAN", "BSRGAN", "ESRGAN", "SCUNet", "CodeFormer", "--all"]
 CMD ["--enable-insecure-extension-access"]
 
