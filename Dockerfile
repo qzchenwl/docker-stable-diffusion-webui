@@ -19,7 +19,7 @@ WORKDIR /content/stable-diffusion-webui
 RUN python3 -m venv venv && \
     source venv/bin/activate && \
     pip3 install --no-cache-dir --upgrade pip && \
-    pip3 install --no-cache-dir torch==1.12.1 torchvision==0.13.1 \
+    pip3 install --no-cache-dir torch==1.12.1 torchvision==0.13.1 && \
     python3 launch.py --skip-torch-cuda-test --exit
 
 RUN pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
