@@ -16,6 +16,7 @@ RUN apt update && \
 
 RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui /content/stable-diffusion-webui
 
+SHELL ["/bin/bash", "-c"]
 WORKDIR /content/stable-diffusion-webui
 RUN python3 -m venv venv && \
     source venv/bin/activate && \
