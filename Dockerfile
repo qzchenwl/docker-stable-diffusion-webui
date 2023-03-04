@@ -28,6 +28,7 @@ RUN pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
 VOLUME /content/stable-diffusion-webui/extensions
 VOLUME /content/stable-diffusion-webui/models
+VOLUME /content/stable-diffusion-webui/embeddings
 VOLUME /content/stable-diffusion-webui/outputs
 VOLUME /content/stable-diffusion-webui/localizations
 
