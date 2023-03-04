@@ -37,5 +37,5 @@ COPY entrypoint.sh /content/entrypoint.sh
 COPY download-chilloutmix-model.sh /content/download-chilloutmix-model.sh
 
 ENTRYPOINT ["/content/entrypoint.sh"]
-CMD ["--listen", "--skip-install", "-f", "--skip-torch-cuda-test", "--skip-version-check", "--no-half-vae", "--use-cpu", "all"]
+CMD ["--listen", "--skip-install", "-f", "--skip-torch-cuda-test", "--skip-version-check", "--no-half", "--use-cpu", "all"]
 
